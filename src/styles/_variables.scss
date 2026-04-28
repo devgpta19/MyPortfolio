@@ -1,0 +1,64 @@
+// Color Palette - Cyberpunk RPG Theme
+$color-bg-dark: #050a0f;
+$color-bg-light: #f0f4f8;
+
+$color-primary-dark: #00f3ff; // Neon Cyan
+$color-primary-light: #0078d4; // Tech Blue
+
+$color-accent-dark: #0dff00; // Greenish
+$color-accent-light: #ff5a1e; // Orange
+
+$color-text-dark: #e0e0e0;
+$color-text-light: #201f1e;
+
+$color-glass-dark: rgba(0, 243, 255, 0.05);
+$color-glass-light: rgba(0, 120, 212, 0.05);
+
+$font-main: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+$font-mono: 'Consolas', 'Courier New', monospace;
+
+:root {
+  --bg: #{$color-bg-dark};
+  --primary: #{$color-primary-dark};
+  --accent: #{$color-accent-dark};
+  --text: #{$color-text-dark};
+  --glass: #{$color-glass-dark};
+  --border: rgba(0, 243, 255, 0.3);
+}
+
+[data-theme='light'] {
+  --bg: #{$color-bg-light};
+  --primary: #{$color-primary-light};
+  --accent: #{$color-accent-light};
+  --text: #{$color-text-light};
+  --glass: #{$color-glass-light};
+  --border: rgba(0, 120, 212, 0.3);
+}
+
+@mixin gaming-border {
+  border: 1px solid var(--border);
+  box-shadow: 0 0 15px rgba(0, 243, 255, 0.1);
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: 10px;
+    height: 10px;
+    border-top: 2px solid var(--primary);
+    border-left: 2px solid var(--primary);
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    right: -2px;
+    width: 10px;
+    height: 10px;
+    border-bottom: 2px solid var(--primary);
+    border-right: 2px solid var(--primary);
+  }
+}
