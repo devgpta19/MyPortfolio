@@ -26,7 +26,7 @@ const Education = () => {
   return (
     <section id="education" className="section-container education-section">
       <div className="section-header">
-        <h2 className="glitch-hover">ACADEMY_RECORDS.LOG</h2>
+        <h2 className="text-gradient">Academic Foundation</h2>
         <div className="header-line"></div>
       </div>
 
@@ -49,17 +49,28 @@ const Education = () => {
             <div className="card-content">
               <p className="edu-desc">{item.desc}</p>
               <div className="score-container">
-                <span className="score-label">SYNC_RATE:</span>
+                <span className="score-label">ACHIEVEMENT:</span>
                 <span className="score-value">{item.score}</span>
               </div>
             </div>
-            
-            <div className="corner-decoration"></div>
           </div>
         ))}
       </div>
 
       <style jsx>{`
+        .section-header {
+          margin-bottom: 50px;
+        }
+        .section-header h2 {
+          font-size: 2.5rem;
+          margin-bottom: 10px;
+        }
+        .header-line {
+          width: 60px;
+          height: 4px;
+          background: var(--primary);
+          border-radius: 2px;
+        }
         .education-timeline {
           display: flex;
           flex-direction: column;
@@ -70,65 +81,54 @@ const Education = () => {
           display: flex;
           flex-direction: column;
           gap: 20px;
-          transition: 0.3s;
+          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
           overflow: hidden;
-        }
-        .education-card:hover {
-          background: rgba(0, 243, 255, 0.08);
-          transform: scale(1.01);
         }
         
         .card-header {
           display: flex;
           align-items: center;
-          gap: 20px;
+          gap: 25px;
           flex-wrap: wrap;
         }
         .degree-icon {
           color: var(--primary);
-          background: rgba(0, 243, 255, 0.1);
+          background: rgba(129, 140, 248, 0.1);
           padding: 15px;
-          clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+          border-radius: 16px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
         .header-text { flex: 1; }
-        .header-text h3 { font-size: 1.4rem; color: var(--primary); margin-bottom: 5px; }
-        .institution { font-size: 1rem; opacity: 0.8; font-family: 'Consolas', monospace; }
+        .header-text h3 { font-size: 1.5rem; color: var(--text); margin-bottom: 5px; font-weight: 700; }
+        .institution { font-size: 1.1rem; opacity: 0.6; font-weight: 500; }
         
         .period-badge {
-          background: var(--primary);
-          color: var(--bg);
-          padding: 5px 15px;
-          font-family: 'Consolas', monospace;
-          font-weight: bold;
-          font-size: 0.8rem;
+          background: rgba(129, 140, 248, 0.1);
+          color: var(--primary);
+          padding: 8px 20px;
+          border-radius: 100px;
+          font-weight: 700;
+          font-size: 0.85rem;
+          border: 1px solid rgba(129, 140, 248, 0.2);
         }
 
-        .edu-desc { line-height: 1.6; opacity: 0.7; max-width: 800px; }
+        .edu-desc { line-height: 1.8; opacity: 0.7; max-width: 800px; font-size: 1.1rem; }
         
         .score-container {
-          margin-top: 15px;
+          margin-top: 20px;
           display: flex;
-          gap: 10px;
+          gap: 12px;
           align-items: center;
-          font-family: 'Consolas', monospace;
         }
-        .score-label { font-size: 0.8rem; opacity: 0.5; }
-        .score-value { color: var(--accent); font-weight: bold; font-size: 1.1rem; }
+        .score-label { font-size: 0.75rem; opacity: 0.5; font-weight: 800; letter-spacing: 1px; }
+        .score-value { color: var(--accent); font-weight: 800; font-size: 1.2rem; font-family: var(--font-mono); }
 
-        .corner-decoration {
-          position: absolute;
-          top: 0;
-          right: 0;
-          width: 50px;
-          height: 50px;
-          background: linear-gradient(225deg, var(--primary) 0%, transparent 50%);
-          opacity: 0.1;
-        }
-
-        @media (max-width: 600px) {
-          .card-header { flex-direction: column; align-items: flex-start; }
-          .period-badge { order: -1; margin-bottom: 10px; }
-          .header-text h3 { font-size: 1.1rem; }
+        @media (max-width: 768px) {
+          .card-header { gap: 15px; }
+          .header-text h3 { font-size: 1.2rem; }
+          .period-badge { order: -1; width: 100%; text-align: center; }
         }
       `}</style>
     </section>

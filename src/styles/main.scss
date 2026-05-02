@@ -16,9 +16,9 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
+  font-family: 'Outfit', sans-serif;
   font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: -0.02em;
 }
 
 .mono {
@@ -27,69 +27,51 @@ h1, h2, h3, h4, h5, h6 {
 
 // Custom Scrollbar
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
 ::-webkit-scrollbar-track {
   background: var(--bg);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--primary);
-  border-radius: 3px;
+  background: linear-gradient(var(--primary), var(--accent));
+  border-radius: 10px;
 }
 
-// Glitch effect base
-@keyframes glitch {
-  0% { transform: translate(0); }
-  20% { transform: translate(-2px, 2px); }
-  40% { transform: translate(-2px, -2px); }
-  60% { transform: translate(2px, 2px); }
-  80% { transform: translate(2px, -2px); }
-  100% { transform: translate(0); }
-}
-
-.glitch-hover:hover {
-  animation: glitch 0.3s infinite;
-  color: var(--accent);
-}
-
-// Scanline effect
-body::after {
+// Subtle Gradient Background
+body::before {
   content: '';
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    rgba(18, 16, 16, 0) 50%, 
-    rgba(0, 0, 0, 0.1) 50%
-  ), linear-gradient(
-    90deg, 
-    rgba(255, 0, 0, 0.03), 
-    rgba(0, 255, 0, 0.01), 
-    rgba(0, 0, 255, 0.03)
-  );
-  background-size: 100% 4px, 3px 100%;
-  z-index: 1000;
+  background: radial-gradient(circle at 50% 0%, rgba(129, 140, 248, 0.15) 0%, transparent 50%),
+              radial-gradient(circle at 100% 100%, rgba(251, 113, 133, 0.1) 0%, transparent 50%);
+  z-index: -1;
   pointer-events: none;
-  opacity: 0.15;
 }
 
 .section-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 80px 20px;
+  padding: 100px 24px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-// Game UI Elements
+// Refined Card Elements
 .hud-card {
-  @include gaming-border;
-  background: var(--glass);
-  backdrop-filter: blur(10px);
-  padding: 2rem;
-  margin: 1rem 0;
+  @include premium-card;
+  padding: 2.5rem;
+  margin: 1.5rem 0;
 }
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+

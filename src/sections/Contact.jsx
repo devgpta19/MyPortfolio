@@ -20,42 +20,38 @@ const Contact = () => {
   return (
     <section id="contact" className="section-container contact-section">
       <div className="section-header">
-        <h2 className="glitch-hover">COMM_LINK.TERM</h2>
+        <h2 className="text-gradient">Get In Touch</h2>
         <div className="header-line"></div>
       </div>
 
       <div className="contact-grid">
         <div className="contact-info hud-card">
-          <div className="terminal-header">
-            <TerminalIcon size={20} />
-            <span>CONNECTION_STATUS: SECURE</span>
+          <div className="info-header">
+            <h3>Let's Collaborate</h3>
+            <p>Ready to discuss your next project or just want to say hi? I'm always open to new opportunities and interesting conversations.</p>
           </div>
-          <div className="terminal-body">
-            <p className="typing">Ready to start a new mission together?</p>
-            <div className="contact-details">
-              <div className="detail">
-                <span className="label">EMAIL:</span>
-                <span className="value">devansh2002gupta@gmail.com</span>
-              </div>
-              <div className="detail">
-                <span className="label">LOCA:</span>
-                <span className="value">Pune, India [IST]</span>
-              </div>
-              <div className="detail">
-                <span className="label">LINK:</span>
-                <span className="value">linkedin.com/in/devgupta19</span>
-              </div>
+          <div className="contact-details">
+            <div className="detail">
+              <span className="label">EMAIL</span>
+              <span className="value">devansh2002gupta@gmail.com</span>
             </div>
-            <div className="terminal-cursor">_</div>
+            <div className="detail">
+              <span className="label">LOCATION</span>
+              <span className="value">Pune, India</span>
+            </div>
+            <div className="detail">
+              <span className="label">LINKEDIN</span>
+              <span className="value">linkedin.com/in/devgupta19</span>
+            </div>
           </div>
         </div>
 
         <form className="contact-form hud-card" onSubmit={handleSubmit}>
-          <h3 className="form-title">SEND_TRANSMISSION</h3>
+          <h3 className="form-title">Send Message</h3>
           
           <div className="form-fields">
             <TextField
-              label="SUBJECT.NAME"
+              label="Your Name"
               variant="outlined"
               fullWidth
               color="primary"
@@ -64,7 +60,7 @@ const Contact = () => {
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
             />
             <TextField
-              label="RETURN.ADDR"
+              label="Email Address"
               variant="outlined"
               fullWidth
               color="primary"
@@ -74,13 +70,13 @@ const Contact = () => {
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
             />
             <TextField
-              label="DATA.PAYLOAD"
+              label="Message"
               variant="outlined"
               fullWidth
               color="primary"
               required
               multiline
-              rows={4}
+              rows={5}
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
             />
@@ -90,94 +86,102 @@ const Contact = () => {
             type="submit"
             variant="contained"
             color="primary"
-            fullWidth
+            size="large"
             disabled={status === 'SENDING'}
             endIcon={status === 'SENDING' ? null : <Send />}
           >
-            {status === 'IDLE' && 'EXECUTE_SEND'}
-            {status === 'SENDING' && 'UPLOADING...'}
-            {status === 'SUCCESS' && 'DATA_SENT_SUCCESSFULLY'}
+            {status === 'IDLE' && 'Send Message'}
+            {status === 'SENDING' && 'Sending...'}
+            {status === 'SUCCESS' && 'Message Sent!'}
           </Button>
         </form>
       </div>
 
       <style jsx>{`
+        .section-header {
+          margin-bottom: 50px;
+        }
+        .section-header h2 {
+          font-size: 2.5rem;
+          margin-bottom: 10px;
+        }
+        .header-line {
+          width: 60px;
+          height: 4px;
+          background: var(--primary);
+          border-radius: 2px;
+        }
         .contact-grid {
           display: grid;
           grid-template-columns: 1fr 1.5fr;
-          gap: 30px;
+          gap: 40px;
           align-items: start;
         }
         
-        .terminal-header {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          color: var(--primary);
-          font-family: 'Consolas', monospace;
-          font-size: 0.8rem;
+        .info-header h3 {
+          font-size: 2rem;
           margin-bottom: 20px;
-          border-bottom: 1px solid var(--border);
-          padding-bottom: 10px;
+          color: var(--text);
         }
-        .terminal-body {
-          font-family: 'Consolas', monospace;
-          color: var(--primary);
+        .info-header p {
+          font-size: 1.1rem;
+          line-height: 1.8;
+          opacity: 0.7;
+          margin-bottom: 40px;
         }
-        .typing {
-           margin-bottom: 20px;
-           overflow: hidden;
-           white-space: nowrap;
-           border-right: 2px solid var(--primary);
-           width: 0;
-           animation: type 2s steps(40) forwards;
-        }
-        @keyframes type { from { width: 0 } to { width: 100% } }
         
         .contact-details {
           display: flex;
           flex-direction: column;
-          gap: 15px;
-          margin-top: 30px;
+          gap: 25px;
         }
-        .detail { display: flex; gap: 15px; font-size: 0.9rem; }
-        .detail .label { opacity: 0.6; width: 60px; }
-        .detail .value { color: var(--text); }
-        
-        .terminal-cursor {
-          display: inline-block;
-          animation: blink 1s infinite;
-          font-size: 1.2rem;
-          margin-top: 20px;
+        .detail { display: flex; flex-direction: column; gap: 5px; }
+        .detail .label { 
+          font-size: 0.75rem; 
+          font-weight: 800; 
+          color: var(--primary); 
+          letter-spacing: 2px;
         }
-        @keyframes blink { 50% { opacity: 0 } }
+        .detail .value { 
+          font-size: 1.1rem; 
+          color: var(--text); 
+          font-weight: 500;
+        }
         
         .form-title {
-          font-size: 1.2rem;
+          font-size: 1.5rem;
           margin-bottom: 30px;
-          color: var(--primary);
+          font-weight: 700;
         }
         .form-fields {
           display: flex;
           flex-direction: column;
-          gap: 20px;
+          gap: 25px;
           margin-bottom: 30px;
         }
 
         :global(.MuiOutlinedInput-root) {
-          border-radius: 0 !important;
+          border-radius: 12px !important;
+          background: rgba(255, 255, 255, 0.02);
         }
         :global(.MuiInputLabel-root) {
-          color: var(--primary) !important;
-          opacity: 0.7;
-          font-family: 'Consolas', monospace !important;
+          color: var(--text) !important;
+          opacity: 0.6;
         }
         :global(.MuiOutlinedInput-notchedOutline) {
           border-color: var(--border) !important;
         }
+        :global(.MuiButton-containedPrimary) {
+          background: var(--primary) !important;
+          color: white !important;
+          padding: 12px 30px !important;
+          font-weight: 700 !important;
+          text-transform: none !important;
+        }
 
         @media (max-width: 900px) {
           .contact-grid { grid-template-columns: 1fr; }
+          .info-header p { margin-bottom: 20px; }
         }
       `}</style>
     </section>

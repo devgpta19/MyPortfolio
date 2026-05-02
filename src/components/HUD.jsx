@@ -56,21 +56,10 @@ const HUD = () => {
     <nav className="hud-container">
       {/* Top HUD Bar */}
       <div className="hud-top hud-element">
-        <div className="player-stats">
-          <div className="stat-item">
-            <span className="stat-label">EXP:</span>
-            <span className="stat-value">5+ MODS</span>
-          </div>
-          <div className="stat-item">
-            <span className="stat-label">LVL:</span>
-            <span className="stat-value">FS DEV</span>
-          </div>
-        </div>
-
         <div className="nav-links desktop-only">
           {navItems.map((item) => (
             <button key={item.id} onClick={() => scrollTo(item.id)} className="glitch-hover">
-              [{item.name}]
+              {item.name}
             </button>
           ))}
         </div>
@@ -137,129 +126,145 @@ const HUD = () => {
           display: flex;
           flex-direction: column;
           justify-content: space-between;
-          padding: 20px;
+          padding: 30px;
         }
         .hud-top {
           display: flex;
           justify-content: space-between;
           align-items: center;
           pointer-events: auto;
-          background: rgba(5, 10, 15, 0.8);
-          backdrop-filter: blur(10px);
-          padding: 15px 25px;
+          background: var(--glass);
+          backdrop-filter: blur(20px);
+          padding: 12px 30px;
           border: 1px solid var(--border);
-          border-radius: 8px;
-          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+          border-radius: 100px;
+          box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
         }
-        .player-stats {
-          display: flex;
-          gap: 20px;
-          font-family: 'Consolas', monospace;
-          font-size: 0.9rem;
-          color: var(--primary);
-        }
-        .stat-label { opacity: 0.7; margin-right: 5px; }
-        .stat-value { font-weight: bold; }
         .nav-links {
           display: flex;
-          gap: 30px;
+          gap: 40px;
         }
         .nav-links button {
           background: none;
           border: none;
           color: var(--text);
           font-family: inherit;
+          font-size: 0.95rem;
           cursor: pointer;
-          font-weight: bold;
+          font-weight: 600;
+          transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          opacity: 0.7;
+          position: relative;
+        }
+        .nav-links button:hover {
+          opacity: 1;
+          color: var(--primary);
+          transform: translateY(-2px);
+        }
+        .nav-links button::after {
+          content: '';
+          position: absolute;
+          bottom: -5px;
+          left: 0;
+          width: 0;
+          height: 2px;
+          background: var(--primary);
           transition: 0.3s;
+        }
+        .nav-links button:hover::after {
+          width: 100%;
         }
         .hud-left {
           position: absolute;
-          left: 20px;
+          left: 40px;
           top: 50%;
           transform: translateY(-50%);
           pointer-events: auto;
-          background: rgba(5, 10, 15, 0.8);
-          backdrop-filter: blur(10px);
-          padding: 20px 15px;
-          border: 1px solid var(--border);
-          border-radius: 8px;
-          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
         }
         .social-column {
           display: flex;
           flex-direction: column;
-          gap: 20px;
+          gap: 25px;
           align-items: center;
         }
-        .social-column a { color: var(--primary); transition: 0.3s; }
-        .social-column a:hover { color: var(--accent); }
-        .line-dec { width: 1px; height: 100px; background: var(--primary); opacity: 0.5; }
+        .social-column a { 
+          color: var(--text); 
+          opacity: 0.6;
+          transition: 0.3s; 
+        }
+        .social-column a:hover { 
+          color: var(--primary); 
+          opacity: 1;
+          transform: scale(1.2);
+        }
+        .line-dec { 
+          width: 1px; 
+          height: 80px; 
+          background: linear-gradient(to bottom, var(--primary), transparent); 
+        }
 
         .hud-bottom {
           display: flex;
           justify-content: space-between;
           align-items: center;
           pointer-events: auto;
-          background: rgba(5, 10, 15, 0.8);
-          backdrop-filter: blur(10px);
-          padding: 15px 25px;
-          border: 1px solid var(--border);
-          border-radius: 8px;
-          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+          gap: 20px;
         }
         .health-bar-container {
-          width: 300px;
+          width: 250px;
+          background: var(--glass);
+          padding: 15px 20px;
+          border-radius: 100px;
+          border: 1px solid var(--border);
+          backdrop-filter: blur(10px);
         }
         .health-label {
-          font-family: 'Consolas', monospace;
-          font-size: 0.7rem;
-          color: var(--primary);
-          margin-bottom: 5px;
+          font-family: var(--font-mono);
+          font-size: 0.65rem;
+          color: var(--text);
+          opacity: 0.5;
+          margin-bottom: 8px;
+          letter-spacing: 1px;
         }
         .health-track {
-          height: 6px;
+          height: 4px;
           width: 100%;
-          background: rgba(255,255,255,0.1);
-          border: 1px solid var(--border);
+          background: rgba(255,255,255,0.05);
+          border-radius: 10px;
+          overflow: hidden;
         }
         .health-fill {
           height: 100%;
-          background: var(--primary);
-          box-shadow: 0 0 10px var(--primary);
-          transition: width 0.1s linear;
+          background: linear-gradient(90deg, var(--primary), var(--accent));
+          box-shadow: 0 0 15px var(--primary);
+          transition: width 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .resume-btn {
           background: var(--primary);
-          color: var(--bg);
+          color: white;
           border: none;
-          padding: 10px 20px;
-          font-family: 'Consolas', monospace;
-          font-weight: bold;
+          padding: 14px 28px;
+          border-radius: 100px;
+          font-weight: 700;
           display: flex;
           align-items: center;
-          gap: 10px;
+          gap: 12px;
           cursor: pointer;
           transition: 0.3s;
+          box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
         }
         .resume-btn:hover {
-          background: var(--accent);
           transform: translateY(-5px);
+          box-shadow: 0 15px 30px rgba(99, 102, 241, 0.4);
+          filter: brightness(1.1);
         }
 
         @media (max-width: 768px) {
           .desktop-only { display: none; }
-          .hud-top { padding: 5px 10px; }
-          .health-bar-container { width: 120px; }
-          .player-stats { gap: 8px; font-size: 0.65rem; }
-          .resume-btn { padding: 8px 12px; font-size: 0.75rem; gap: 5px; }
-        }
-        @media (max-width: 480px) {
-          .health-bar-container { display: none; }
-          .player-stats { flex-direction: column; gap: 2px; }
-        }
-        @media (min-width: 769px) {
-          .mobile-only { display: none; }
+          .hud-container { padding: 15px; }
+          .hud-top { padding: 10px 20px; border-radius: 20px; }
+          .health-bar-container { width: 150px; padding: 10px 15px; }
+          .resume-btn { padding: 10px 20px; font-size: 0.8rem; }
         }
       `}</style>
     </nav>

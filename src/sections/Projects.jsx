@@ -39,7 +39,7 @@ const Projects = () => {
   return (
     <section id="projects" className="section-container projects-section">
       <div className="section-header">
-        <h2 className="glitch-hover">MISSION_LOG.EXE</h2>
+        <h2 className="text-gradient">Featured Projects</h2>
         <div className="header-line"></div>
       </div>
 
@@ -47,12 +47,6 @@ const Projects = () => {
         {projects.map((project) => (
           <div key={project.id} className="project-card hud-card">
             <div className="project-header">
-              <div className="project-meta">
-                <span className={`difficulty ${project.difficulty.toLowerCase()}`}>
-                  DIFF: {project.difficulty}
-                </span>
-                <span className="status">STATUS: {project.status}</span>
-              </div>
               <h3 className="project-title">{project.title}</h3>
               <h4 className="project-subtitle">{project.subtitle}</h4>
             </div>
@@ -69,14 +63,11 @@ const Projects = () => {
             <div className="project-footer">
               <div className="project-actions">
                 <a href={project.links.github} className="action-btn">
-                  <GitHub size={18} /> SOURCE
+                  <GitHub sx={{ fontSize: 20 }} /> Codebase
                 </a>
                 <a href={project.links.live} className="action-btn primary">
-                  <ExternalLink size={18} /> DEPLOYMENT
+                  <ExternalLink size={18} /> Live Demo
                 </a>
-              </div>
-              <div className="terminal-icon">
-                <Terminal size={20} />
               </div>
             </div>
           </div>
@@ -84,81 +75,106 @@ const Projects = () => {
       </div>
 
       <style jsx>{`
+        .section-header {
+          margin-bottom: 50px;
+        }
+        .section-header h2 {
+          font-size: 2.5rem;
+          margin-bottom: 10px;
+        }
+        .header-line {
+          width: 60px;
+          height: 4px;
+          background: var(--primary);
+          border-radius: 2px;
+        }
         .projects-list {
-          display: flex;
-          flex-direction: column;
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
           gap: 30px;
         }
         .project-card {
-           display: grid;
-           grid-template-columns: 1fr;
+           display: flex;
+           flex-direction: column;
            gap: 20px;
-           transition: 0.4s;
+           height: 100%;
         }
-        .project-card:hover {
-          transform: translateX(10px);
-          border-color: var(--accent);
-        }
-        .project-meta {
-          display: flex;
-          gap: 20px;
-          font-family: 'Consolas', monospace;
-          font-size: 0.7rem;
-          margin-bottom: 10px;
-        }
-        .difficulty.hard { color: var(--accent); }
-        .difficulty.medium { color: #ffcc00; }
-        .status { color: #00ff00; opacity: 0.8; }
-
-        .project-title { font-size: 2rem; color: var(--primary); }
-        .project-subtitle { font-size: 0.9rem; margin-bottom: 15px; opacity: 0.6; }
         
-        .project-desc { font-size: 1rem; line-height: 1.5; margin-bottom: 20px; border-left: 2px solid var(--primary); padding-left: 15px; }
+        .project-title { 
+          font-size: 1.75rem; 
+          font-weight: 800;
+          color: var(--text); 
+          margin-bottom: 5px;
+          letter-spacing: -0.02em;
+        }
+        .project-subtitle { 
+          font-size: 0.9rem; 
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          color: var(--primary);
+          margin-bottom: 15px; 
+          opacity: 0.8; 
+        }
         
-        .project-tech { display: flex; flex-wrap: wrap; gap: 10px; }
+        .project-desc { 
+          font-size: 1.05rem; 
+          line-height: 1.6; 
+          margin-bottom: 25px; 
+          opacity: 0.7;
+        }
+        
+        .project-tech { 
+          display: flex; 
+          flex-wrap: wrap; 
+          gap: 8px; 
+          margin-top: auto;
+        }
         .tech-badge {
-          background: rgba(255,255,255,0.05);
-          padding: 4px 10px;
+          background: rgba(129, 140, 248, 0.08);
+          color: var(--primary);
+          padding: 6px 12px;
           font-size: 0.75rem;
-          font-family: 'Consolas', monospace;
-          border: 1px solid rgba(255,255,255,0.1);
+          font-weight: 700;
+          border-radius: 100px;
+          border: 1px solid rgba(129, 140, 248, 0.1);
         }
         
         .project-footer {
-          margin-top: 20px;
+          margin-top: 25px;
           padding-top: 20px;
-          border-top: 1px dashed rgba(255,255,255,0.1);
-          display: flex;
+          border-top: 1px solid var(--border);
+        }
+        .project-actions { 
+          display: flex; 
           justify-content: space-between;
           align-items: center;
         }
-        .project-actions { display: flex; gap: 15px; }
         .action-btn {
           display: flex;
           align-items: center;
           gap: 8px;
           text-decoration: none;
           color: var(--text);
-          font-size: 0.8rem;
-          font-weight: bold;
-          font-family: 'Consolas', monospace;
+          font-size: 0.85rem;
+          font-weight: 700;
           transition: 0.3s;
+          opacity: 0.6;
         }
-        .action-btn:hover { color: var(--primary); }
-        .action-btn.primary { color: var(--primary); }
-        .action-btn.primary:hover { color: var(--accent); }
-        
-        .terminal-icon { color: var(--primary); opacity: 0.3; }
+        .action-btn:hover { 
+          color: var(--primary); 
+          opacity: 1;
+        }
+        .action-btn.primary { 
+          color: var(--primary); 
+          opacity: 1;
+        }
+        .action-btn.primary:hover { 
+          color: var(--accent); 
+        }
 
-        @media (min-width: 900px) {
-           .project-card {
-             grid-template-columns: 2fr 1fr;
-             grid-template-areas: "header header" "content footer";
-           }
-           .project-header { grid-area: header; }
-           .project-content { grid-area: content; }
-           .project-footer { grid-area: footer; border-top: none; padding-top: 0; align-items: flex-end; flex-direction: column; }
-           .project-actions { flex-direction: column; align-items: flex-end; }
+        @media (max-width: 768px) {
+           .projects-list { grid-template-columns: 1fr; }
         }
       `}</style>
     </section>

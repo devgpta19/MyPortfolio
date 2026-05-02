@@ -57,22 +57,47 @@ const Skills = () => {
   };
 
   const skillGroups = [
-    { title: 'Frontend', skills: ['React.js', 'Vite', 'Material UI (MUI)', 'Chart.js', 'SCSS', 'GSAP'] },
-    { title: 'Backend', skills: ['Spring Boot', '.NET 8', 'REST APIs', 'JWT', 'RBAC', 'Java'] },
-    { title: 'Data', skills: ['MySQL', 'Database Design', 'Normalization', 'Entity Framework'] },
-    { title: 'Tools', skills: ['Git', 'Docker', 'Postman', 'VS Code', 'JIRA', 'Agile'] }
+    { title: 'Frontend', skills: ['React.js', 'Vite', 'Material UI (MUI)', 'Chart.js', 'SCSS', 'GSAP', 'HTML', 'CSS', 'JavaScript'] },
+    { title: 'Backend', skills: ['Spring Boot', '.NET 8','ASP.NET MVC', 'ASP.NET Core', 'REST APIs', 'JWT', 'RBAC', 'Java'] },
+    { title: 'Data', skills: ['MySQL', 'Database Design', 'Normalization', 'Entity Framework', 'Hibernate'] },
+    { title: 'Tools', skills: ['Git', 'Postman', 'VS Code', 'JIRA', 'Agile', 'Visual Studio'] }
   ];
 
   return (
     <section id="skills" className="section-container skills-section">
       <div className="section-header">
-        <h2 className="glitch-hover">ATTRIBUTE_MATRIX</h2>
+        <h2 className="text-gradient">Technical Expertise</h2>
         <div className="header-line"></div>
       </div>
 
       <div className="skills-grid">
         <div className="radar-container hud-card">
-          <Radar data={radarData} options={radarOptions} />
+          <Radar 
+            data={{
+              ...radarData,
+              datasets: [{
+                ...radarData.datasets[0],
+                backgroundColor: 'rgba(129, 140, 248, 0.2)',
+                borderColor: '#818cf8',
+                pointBackgroundColor: '#818cf8',
+                pointHoverBackgroundColor: '#fb7185',
+              }]
+            }} 
+            options={{
+              ...radarOptions,
+              scales: {
+                r: {
+                  ...radarOptions.scales.r,
+                  pointLabels: {
+                    color: '#94a3b8',
+                    font: { family: 'Outfit', size: 14, weight: 'bold' }
+                  },
+                  angleLines: { color: 'rgba(255, 255, 255, 0.05)' },
+                  grid: { color: 'rgba(255, 255, 255, 0.05)' }
+                }
+              }
+            }} 
+          />
         </div>
 
         <div className="skills-list-container">
@@ -81,7 +106,7 @@ const Skills = () => {
               <h4>{group.title}</h4>
               <div className="skill-tags">
                 {group.skills.map(skill => (
-                  <span key={skill} className="skill-tag">[{skill}]</span>
+                  <span key={skill} className="skill-tag">{skill}</span>
                 ))}
               </div>
             </div>
@@ -90,27 +115,28 @@ const Skills = () => {
       </div>
 
       <style jsx>{`
-        .skills-section {
-          background: rgba(0,0,0,0.2);
-          padding: 60px 15px;
-        }
         .section-header {
-          margin-bottom: 40px;
-          display: flex;
-          align-items: center;
-          gap: 15px;
+          margin-bottom: 50px;
         }
-        .section-header h2 { font-size: 1.8rem; }
-        .header-line { flex: 1; height: 1px; background: var(--primary); opacity: 0.3; }
+        .section-header h2 {
+          font-size: 2.5rem;
+          margin-bottom: 10px;
+        }
+        .header-line {
+          width: 60px;
+          height: 4px;
+          background: var(--primary);
+          border-radius: 2px;
+        }
         
         .skills-grid {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          gap: 30px;
+          gap: 40px;
           align-items: center;
         }
         .radar-container {
-          padding: 20px;
+          padding: 30px;
           display: flex;
           justify-content: center;
           width: 100%;
@@ -120,38 +146,45 @@ const Skills = () => {
         .skills-list-container {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          gap: 15px;
+          gap: 20px;
         }
-        .skill-group { padding: 1.2rem; }
+        .skill-group { 
+          padding: 1.5rem; 
+        }
         .skill-group h4 {
           color: var(--primary);
-          margin-bottom: 12px;
-          font-size: 0.85rem;
+          margin-bottom: 15px;
+          font-size: 0.9rem;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          font-weight: 700;
         }
         .skill-tags {
           display: flex;
           flex-wrap: wrap;
-          gap: 8px;
+          gap: 10px;
         }
         .skill-tag {
-          font-family: 'Consolas', monospace;
-          font-size: 0.75rem;
+          font-size: 0.85rem;
           color: var(--text);
           opacity: 0.7;
+          background: rgba(255, 255, 255, 0.03);
+          padding: 4px 10px;
+          border-radius: 4px;
           transition: 0.3s;
         }
+        .skill-tag:hover {
+          opacity: 1;
+          color: var(--primary);
+          background: rgba(129, 140, 248, 0.1);
+        }
 
-        @media (max-width: 1024px) {
-          .skills-grid { 
-            grid-template-columns: 1fr; 
-            gap: 40px;
-          }
+        @media (max-width: 1100px) {
+          .skills-grid { grid-template-columns: 1fr; gap: 40px; }
           .radar-container { order: -1; }
         }
         @media (max-width: 600px) {
           .skills-list-container { grid-template-columns: 1fr; }
-          .section-header h2 { font-size: 1.4rem; }
-          .radar-container { padding: 10px; }
         }
       `}</style>
 

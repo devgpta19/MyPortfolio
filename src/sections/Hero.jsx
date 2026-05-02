@@ -47,63 +47,64 @@ const Hero = () => {
           </div>
           <div className="hero-info">
             <h1 className="hero-title">
-              <span>DEVANSH</span> <span>GUPTA</span>
+              <span className="text-gradient">DEVANSH</span> <span className="text-gradient">GUPTA</span>
             </h1>
-            <h2 className="hero-subtitle">FULL STACK DEVELOPER // CLASS: ARCHITECT</h2>
+            <h2 className="hero-subtitle">Full Stack Developer & Software Architect</h2>
             <p className="hero-bio">
-              Frontend / Full Stack Developer skilled in React.js, TypeScript, and REST APIs. 
-              Proven in performance optimization (up to 40%) and secure authentication.
+              Building high-performance, scalable web applications with a focus on user experience and technical excellence. 
+              Specializing in React, Node.js, and Cloud Infrastructure.
             </p>
           </div>
         </div>
 
         {/* Character Stats Card */}
         <div className="hero-stats-card hud-card">
-          <h3 className="section-label">CHARACTER_STATS.EXE</h3>
+          <h3 className="section-label">Core Competencies</h3>
           <div className="stats-list">
-            <StatRow label="SPEED" value="95" sub="Optimization Enthusiast" />
-            <StatRow label="INTEL" value="90" sub="Problem Solver" />
-            <StatRow label="STAMINA" value="85" sub="Scalable Architecture" />
-            <StatRow label="LUCK" value="99" sub="Clean Code Logic" />
+            <StatRow label="FRONTEND ARCHITECTURE" value="95" sub="React, Next.js, Performance" />
+            <StatRow label="BACKEND SYSTEMS" value="90" sub="Node.js, Python, Java" />
+            <StatRow label="SYSTEM DESIGN" value="85" sub="Scalability & Reliability" />
+            <StatRow label="DEV OPS" value="80" sub="CI/CD, Cloud, Docker" />
           </div>
           <div className="hero-links">
-             <div className="link-item">Location: Pune, Maharashtra</div>
-             <div className="link-item">Status: Ready for Deployment</div>
+             <div className="link-item">Base: Pune, Maharashtra</div>
+             <div className="link-item">Availability: Open for Innovation</div>
           </div>
         </div>
       </div>
 
       <style jsx>{`
         .hero-section {
-          padding-top: 120px;
+          padding-top: 140px;
         }
         .hero-grid {
           display: grid;
-          grid-template-columns: 1.5fr 1fr;
-          gap: 30px;
+          grid-template-columns: 1.6fr 1fr;
+          gap: 40px;
           align-items: center;
         }
         .hero-profile-card {
           display: flex;
           flex-direction: column;
-          gap: 30px;
+          gap: 40px;
         }
         .hero-avatar {
           position: relative;
-          width: 150px;
-          height: 150px;
+          width: 140px;
+          height: 140px;
         }
         .avatar-placeholder {
           width: 100%;
           height: 100%;
-          background: var(--primary);
-          color: var(--bg);
+          background: linear-gradient(135deg, var(--primary), var(--accent));
+          color: white;
           display: flex;
           align-items: center;
           justify-content: center;
-          font-size: 3rem;
+          font-size: 2.5rem;
           font-weight: 800;
-          clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+          border-radius: 40px;
+          box-shadow: 0 20px 40px rgba(0,0,0,0.3);
         }
         .avatar-ring {
           position: absolute;
@@ -111,55 +112,68 @@ const Hero = () => {
           left: -10px;
           width: calc(100% + 20px);
           height: calc(100% + 20px);
-          border: 2px dashed var(--primary);
-          border-radius: 50%;
-          animation: spin 10s linear infinite;
+          border: 2px solid var(--primary);
+          opacity: 0.3;
+          border-radius: 50px;
+          animation: pulse 4s ease-in-out infinite;
         }
-        @keyframes spin { from { rotate: 0deg; } to { rotate: 360deg; } }
+        @keyframes pulse { 
+          0%, 100% { transform: scale(1); opacity: 0.3; } 
+          50% { transform: scale(1.05); opacity: 0.1; } 
+        }
         
         .hero-title {
-          font-size: 4rem;
-          line-height: 1;
-          margin-bottom: 10px;
+          font-size: 5rem;
+          line-height: 0.9;
+          margin-bottom: 20px;
           display: flex;
           flex-wrap: wrap;
           gap: 15px;
+          letter-spacing: -0.04em;
         }
-        .hero-title span { display: inline-block; }
         .hero-subtitle {
-          color: var(--primary);
-          font-size: 1.2rem;
-          margin-bottom: 20px;
+          color: var(--text);
+          font-size: 1.5rem;
+          margin-bottom: 25px;
+          font-weight: 600;
+          opacity: 0.9;
         }
         .hero-bio {
-          font-size: 1.1rem;
-          line-height: 1.6;
-          opacity: 0.8;
-          max-width: 600px;
+          font-size: 1.2rem;
+          line-height: 1.8;
+          opacity: 0.7;
+          max-width: 650px;
         }
         
         .section-label {
-          color: var(--accent);
-          font-size: 0.9rem;
-          margin-bottom: 20px;
-          border-bottom: 1px solid var(--accent);
-          display: inline-block;
+          color: var(--primary);
+          font-size: 1rem;
+          margin-bottom: 25px;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 2px;
         }
         .stats-list {
           display: flex;
           flex-direction: column;
-          gap: 20px;
-          margin-bottom: 30px;
+          gap: 25px;
+          margin-bottom: 35px;
         }
         .hero-links {
-          font-family: 'Consolas', monospace;
-          font-size: 0.9rem;
-          opacity: 0.7;
+          font-family: var(--font-mono);
+          font-size: 0.85rem;
+          display: flex;
+          gap: 20px;
+          opacity: 0.6;
         }
 
+        @media (max-width: 1100px) {
+          .hero-title { font-size: 4rem; }
+        }
         @media (max-width: 900px) {
           .hero-grid { grid-template-columns: 1fr; }
-          .hero-title { font-size: 2.5rem; }
+          .hero-title { font-size: 3rem; }
+          .hero-section { padding-top: 100px; }
         }
       `}</style>
     </section>
@@ -177,13 +191,13 @@ const StatRow = ({ label, value, sub }) => (
     </div>
     <div className="stat-sub">{sub}</div>
     <style jsx>{`
-      .stat-row { margin-bottom: 10px; }
-      .stat-meta { display: flex; justify-content: space-between; margin-bottom: 5px; font-family: 'Consolas', monospace; font-weight: bold; }
-      .stat-row-label { font-size: 0.8rem; opacity: 0.8; }
-      .stat-row-value { color: var(--primary); }
-      .stat-bar-bg { height: 4px; background: rgba(255,255,255,0.1); }
-      .stat-bar-fill { height: 100%; background: var(--primary); box-shadow: 0 0 10px var(--primary); }
-      .stat-sub { font-size: 0.7rem; opacity: 0.5; margin-top: 3px; font-style: italic; }
+      .stat-row { margin-bottom: 15px; }
+      .stat-meta { display: flex; justify-content: space-between; margin-bottom: 8px; font-weight: 700; }
+      .stat-row-label { font-size: 0.75rem; opacity: 0.6; letter-spacing: 1px; }
+      .stat-row-value { color: var(--primary); font-family: var(--font-mono); }
+      .stat-bar-bg { height: 6px; background: rgba(255,255,255,0.05); border-radius: 10px; overflow: hidden; }
+      .stat-bar-fill { height: 100%; background: linear-gradient(90deg, var(--primary), var(--accent)); border-radius: 10px; }
+      .stat-sub { font-size: 0.75rem; opacity: 0.5; margin-top: 6px; }
     `}</style>
   </div>
 );
