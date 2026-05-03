@@ -103,6 +103,8 @@ const Hero = () => {
         .hero-subtitle {
           font-size: 1.75rem;
           color: var(--text);
+          margin-top: 30px;
+          height: 5px;
           margin-bottom: 30px;
           font-weight: 500;
           opacity: 0.8;
