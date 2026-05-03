@@ -1,4 +1,5 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
+import { Button } from '@mui/material';
 import gsap from 'gsap';
 
 const Hero = () => {
@@ -39,36 +40,34 @@ const Hero = () => {
   return (
     <section id="hero" className="section-container hero-section" ref={containerRef}>
       <div className="hero-grid">
-        {/* Profile Card */}
-        <div className="hero-profile-card hud-card">
-          <div className="hero-avatar">
-            <div className="avatar-placeholder">DG</div>
-            <div className="avatar-ring"></div>
-          </div>
-          <div className="hero-info">
-            <h1 className="hero-title">
-              <span className="text-gradient">DEVANSH</span> <span className="text-gradient">GUPTA</span>
-            </h1>
-            <h2 className="hero-subtitle">Full Stack Developer & Software Architect</h2>
-            <p className="hero-bio">
-              Building high-performance, scalable web applications with a focus on user experience and technical excellence. 
-              Specializing in React, Node.js, and Cloud Infrastructure.
-            </p>
+        <div className="hero-text">
+          <h1 className="hero-title">
+            <span className="greeting">Hi, I'm</span>
+            <span className="text-gradient name">Devansh Gupta</span>
+          </h1>
+          <h2 className="hero-subtitle"> </h2>
+          <p className="hero-bio">
+            I specialize in building scalable, high-performance web applications. 
+            Passionate about crafting clean code and exceptional user experiences 
+            through modern engineering practices.
+          </p>
+          <div className="hero-actions">
+            <Button variant="contained" color="primary" size="large" onClick={() => document.getElementById('projects').scrollIntoView({ behavior: 'smooth' })}>
+              Explore Projects
+            </Button>
+            <Button variant="outlined" color="primary" size="large" onClick={() => window.open('https://drive.google.com/file/d/1tW7PhK327iajaLIpCigaMtJJxCkT0ACs/view?usp=drive_link', '_blank')}>
+              My Resume
+            </Button>
           </div>
         </div>
-
-        {/* Character Stats Card */}
-        <div className="hero-stats-card hud-card">
-          <h3 className="section-label">Core Competencies</h3>
-          <div className="stats-list">
-            <StatRow label="FRONTEND ARCHITECTURE" value="95" sub="React, Next.js, Performance" />
-            <StatRow label="BACKEND SYSTEMS" value="90" sub="Node.js, Python, Java" />
-            <StatRow label="SYSTEM DESIGN" value="85" sub="Scalability & Reliability" />
-            <StatRow label="DEV OPS" value="80" sub="CI/CD, Cloud, Docker" />
-          </div>
-          <div className="hero-links">
-             <div className="link-item">Base: Pune, Maharashtra</div>
-             <div className="link-item">Availability: Open for Innovation</div>
+        <div className="hero-image-container">
+          <div className="hero-card hud-card">
+            <div className="avatar-box">
+              <div className="avatar-placeholder">DG</div>
+            </div>
+            <div className="status-badge">
+              <span className="dot"></span>Open to Work
+            </div>
           </div>
         </div>
       </div>
@@ -76,130 +75,134 @@ const Hero = () => {
       <style jsx>{`
         .hero-section {
           padding-top: 140px;
+          min-height: 80vh;
+          display: flex;
+          align-items: center;
         }
         .hero-grid {
           display: grid;
-          grid-template-columns: 1.6fr 1fr;
-          gap: 40px;
+          grid-template-columns: 1.2fr 0.8fr;
+          gap: 60px;
           align-items: center;
         }
-        .hero-profile-card {
+        .hero-title {
+          font-size: 4rem;
+          line-height: 1.1;
+          margin-bottom: 20px;
           display: flex;
           flex-direction: column;
-          gap: 40px;
         }
-        .hero-avatar {
-          position: relative;
-          width: 140px;
-          height: 140px;
+        .greeting {
+          font-size: 1.5rem;
+          font-weight: 600;
+          opacity: 0.6;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          margin-bottom: 10px;
+        }
+        .hero-subtitle {
+          font-size: 1.75rem;
+          color: var(--text);
+          margin-bottom: 30px;
+          font-weight: 500;
+          opacity: 0.8;
+        }
+        .hero-bio {
+          font-size: 1.2rem;
+          max-width: 600px;
+          margin-bottom: 40px;
+          opacity: 0.7;
+          line-height: 1.8;
+        }
+        .hero-actions {
+          display: flex;
+          gap: 20px;
+        }
+        
+        .hero-image-container {
+          display: flex;
+          justify-content: center;
+        }
+        .hero-card {
+          width: 300px;
+          text-align: center;
+          padding: 40px !important;
+          background: rgba(255, 255, 255, 0.02) !important;
+        }
+        .avatar-box {
+          width: 120px;
+          height: 120px;
+          margin: 0 auto 30px;
+          padding: 10px;
+          border: 2px dashed var(--primary);
+          border-radius: 40px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
         .avatar-placeholder {
           width: 100%;
           height: 100%;
-          background: linear-gradient(135deg, var(--primary), var(--accent));
-          color: white;
+          background: var(--primary);
+          border-radius: 30px;
           display: flex;
           align-items: center;
           justify-content: center;
           font-size: 2.5rem;
           font-weight: 800;
-          border-radius: 40px;
-          box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+          color: white;
+          box-shadow: 0 10px 30px rgba(2, 132, 199, 0.3);
         }
-        .avatar-ring {
-          position: absolute;
-          top: -10px;
-          left: -10px;
-          width: calc(100% + 20px);
-          height: calc(100% + 20px);
-          border: 2px solid var(--primary);
-          opacity: 0.3;
-          border-radius: 50px;
-          animation: pulse 4s ease-in-out infinite;
-        }
-        @keyframes pulse { 
-          0%, 100% { transform: scale(1); opacity: 0.3; } 
-          50% { transform: scale(1.05); opacity: 0.1; } 
-        }
-        
-        .hero-title {
-          font-size: 5rem;
-          line-height: 0.9;
-          margin-bottom: 20px;
-          display: flex;
-          flex-wrap: wrap;
-          gap: 15px;
-          letter-spacing: -0.04em;
-        }
-        .hero-subtitle {
-          color: var(--text);
-          font-size: 1.5rem;
-          margin-bottom: 25px;
-          font-weight: 600;
-          opacity: 0.9;
-        }
-        .hero-bio {
-          font-size: 1.2rem;
-          line-height: 1.8;
-          opacity: 0.7;
-          max-width: 650px;
-        }
-        
-        .section-label {
-          color: var(--primary);
-          font-size: 1rem;
-          margin-bottom: 25px;
-          font-weight: 700;
-          text-transform: uppercase;
-          letter-spacing: 2px;
-        }
-        .stats-list {
-          display: flex;
-          flex-direction: column;
-          gap: 25px;
-          margin-bottom: 35px;
-        }
-        .hero-links {
-          font-family: var(--font-mono);
+        .status-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          background: rgba(34, 197, 94, 0.1);
+          color: #22c55e;
+          padding: 6px 16px;
+          border-radius: 100px;
           font-size: 0.85rem;
-          display: flex;
-          gap: 20px;
-          opacity: 0.6;
+          font-weight: 700;
         }
+        .dot {
+          width: 8px;
+          height: 8px;
+          background: #22c55e;
+          border-radius: 50%;
+          animation: blink 2s infinite;
+        }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
 
-        @media (max-width: 1100px) {
-          .hero-title { font-size: 4rem; }
-        }
         @media (max-width: 900px) {
-          .hero-grid { grid-template-columns: 1fr; }
-          .hero-title { font-size: 3rem; }
+          .hero-grid {
+            grid-template-columns: 1fr;
+            text-align: center;
+            gap: 40px;
+          }
+          .hero-title {
+            font-size: 3rem;
+            align-items: center;
+          }
+          .hero-bio {
+            margin: 0 auto 30px;
+          }
+          .hero-actions {
+            justify-content: center;
+          }
+          .hero-image-container {
+            order: -1;
+            justify-content: center;
+          }
+        }
+        @media (max-width: 600px) {
+          .hero-title { font-size: 2.25rem; }
           .hero-section { padding-top: 100px; }
+          .hero-actions { flex-direction: column; width: 100%; }
+          .hero-actions :global(button) { width: 100%; }
         }
       `}</style>
     </section>
   );
 };
-
-const StatRow = ({ label, value, sub }) => (
-  <div className="stat-row">
-    <div className="stat-meta">
-      <span className="stat-row-label">{label}</span>
-      <span className="stat-row-value">{value}%</span>
-    </div>
-    <div className="stat-bar-bg">
-      <div className="stat-bar-fill" style={{ width: `${value}%` }}></div>
-    </div>
-    <div className="stat-sub">{sub}</div>
-    <style jsx>{`
-      .stat-row { margin-bottom: 15px; }
-      .stat-meta { display: flex; justify-content: space-between; margin-bottom: 8px; font-weight: 700; }
-      .stat-row-label { font-size: 0.75rem; opacity: 0.6; letter-spacing: 1px; }
-      .stat-row-value { color: var(--primary); font-family: var(--font-mono); }
-      .stat-bar-bg { height: 6px; background: rgba(255,255,255,0.05); border-radius: 10px; overflow: hidden; }
-      .stat-bar-fill { height: 100%; background: linear-gradient(90deg, var(--primary), var(--accent)); border-radius: 10px; }
-      .stat-sub { font-size: 0.75rem; opacity: 0.5; margin-top: 6px; }
-    `}</style>
-  </div>
-);
 
 export default Hero;

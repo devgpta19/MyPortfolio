@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import gsap from 'gsap';
 
 const BootScreen = ({ onComplete }) => {
@@ -53,22 +53,25 @@ const BootScreen = ({ onComplete }) => {
     <div className="boot-screen">
       <div className="boot-content">
         <div className="logo-container">
-          <div className="logo-glitch">DG</div>
+          <div className="logo-text">DG</div>
         </div>
         
-        <div className="log-window">
-          {logs.map((log, i) => (
-            <div key={i} className="log-line">
-              <span className="cursor">&gt;</span> {log}
-            </div>
-          ))}
-        </div>
-
         <div className="progress-container">
-          <div className="progress-label">SYSTEM_LOAD: {progress}%</div>
           <div className="progress-track">
             <div className="progress-fill" style={{ width: `${progress}%` }}></div>
           </div>
+          <div className="progress-info">
+            <span className="progress-label">INITIALIZING SYSTEM</span>
+            <span className="progress-percent">{progress}%</span>
+          </div>
+        </div>
+
+        <div className="log-window">
+          {logs.map((log, i) => (
+            <div key={i} className="log-line">
+              {log}
+            </div>
+          ))}
         </div>
       </div>
 
@@ -79,72 +82,78 @@ const BootScreen = ({ onComplete }) => {
           left: 0;
           width: 100%;
           height: 100vh;
-          background: #050a0f;
+          background: #ffffff;
           display: flex;
           align-items: center;
           justify-content: center;
           z-index: 9999;
-          color: #00f3ff;
-          font-family: 'Consolas', monospace;
+          color: #0f172a;
+          font-family: 'Inter', sans-serif;
+        }
+        [data-theme='dark'] .boot-screen {
+          background: #0f172a;
+          color: #f8fafc;
         }
         .boot-content {
-          width: 400px;
+          width: 320px;
           display: flex;
           flex-direction: column;
+          align-items: center;
           gap: 40px;
         }
         .logo-container {
           text-align: center;
-          font-size: 5rem;
+          font-size: 3rem;
           font-weight: 800;
-          position: relative;
+          letter-spacing: -2px;
+          color: #0284c7;
         }
-        .logo-glitch {
-          animation: glitch-anim 2s infinite;
+        [data-theme='dark'] .logo-container {
+          color: #38bdf8;
         }
-        @keyframes glitch-anim {
-          0% { transform: translate(0); text-shadow: 2px 0 red, -2px 0 blue; }
-          20% { transform: translate(-2px, 1px); }
-          40% { transform: translate(2px, -1px); }
-          60% { transform: translate(-2px, 1px); text-shadow: -2px 0 red, 2px 0 blue; }
-          100% { transform: translate(0); }
-        }
-        
-        .log-window {
-          height: 120px;
-          display: flex;
-          flex-direction: column;
-          justify-content: flex-end;
-          gap: 5px;
-          font-size: 0.8rem;
-          opacity: 0.8;
-        }
-        .log-line {
-          display: flex;
-          gap: 10px;
-        }
-        .cursor {
-          animation: blink 0.5s infinite;
-        }
-        @keyframes blink { 50% { opacity: 0 } }
         
         .progress-container {
           width: 100%;
         }
-        .progress-label {
-          font-size: 0.7rem;
-          margin-bottom: 5px;
-        }
         .progress-track {
-          height: 4px;
-          background: rgba(255,255,255,0.1);
+          height: 2px;
+          background: rgba(0, 0, 0, 0.05);
+          width: 100%;
+          border-radius: 10px;
+          overflow: hidden;
+          margin-bottom: 12px;
+        }
+        [data-theme='dark'] .progress-track {
+          background: rgba(255, 255, 255, 0.05);
         }
         .progress-fill {
           height: 100%;
-          background: #00f3ff;
-          box-shadow: 0 0 10px #00f3ff;
-          transition: width 0.1s linear;
+          background: #0284c7;
+          transition: width 0.2s ease-out;
         }
+        [data-theme='dark'] .progress-fill {
+          background: #38bdf8;
+        }
+        .progress-info {
+          display: flex;
+          justify-content: space-between;
+          font-size: 0.7rem;
+          font-weight: 700;
+          letter-spacing: 1px;
+          opacity: 0.5;
+        }
+        
+        .log-window {
+          height: 20px;
+          font-size: 0.75rem;
+          font-weight: 500;
+          opacity: 0.4;
+          text-align: center;
+        }
+        .log-line {
+          animation: fadeIn 0.3s ease-out forwards;
+        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
       `}</style>
     </div>
   );

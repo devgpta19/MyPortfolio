@@ -1,58 +1,54 @@
-// Modern Premium Palette - Celestial Indigo
-$color-bg-dark: #0f172a; // Deep Slate
-$color-bg-light: #f8fafc; // Soft Gray
+// Premium Minimalist Palette - Slate & Azure
+$color-bg-dark: #0f172a; 
+$color-bg-light: #fdfdfd; 
 
-$color-primary-dark: #818cf8; // Indigo Light
-$color-primary-light: #4f46e5; // Indigo Dark
+$color-primary-dark: #38bdf8; 
+$color-primary-light: #0ea5e9; 
 
-$color-accent-dark: #fb7185; // Rose Pink
-$color-accent-light: #e11d48; // Deep Rose
+$color-accent-dark: #94a3b8; 
+$color-accent-light: #64748b; 
 
-$color-text-dark: #f1f5f9;
-$color-text-light: #1e293b;
+$color-text-dark: #f8fafc;
+$color-text-light: #0f172a;
 
-$color-glass-dark: rgba(255, 255, 255, 0.03);
-$color-glass-light: rgba(0, 0, 0, 0.03);
-
-$font-main: 'Outfit', 'Inter', sans-serif;
+$font-main: 'Inter', 'Outfit', sans-serif;
 $font-mono: 'JetBrains Mono', monospace;
 
 :root {
   --bg: #{$color-bg-dark};
+  --bg-rgb: 15, 23, 42;
   --primary: #{$color-primary-dark};
+  --primary-rgb: 56, 189, 248;
   --accent: #{$color-accent-dark};
   --text: #{$color-text-dark};
-  --glass: #{$color-glass-dark};
-  --border: rgba(255, 255, 255, 0.1);
-  --radius-sm: 8px;
-  --radius-md: 16px;
-  --radius-lg: 24px;
+  --border: rgba(255, 255, 255, 0.08);
+  --radius: 16px;
+  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
 [data-theme='light'] {
   --bg: #{$color-bg-light};
+  --bg-rgb: 253, 253, 253;
   --primary: #{$color-primary-light};
+  --primary-rgb: 14, 165, 233;
   --accent: #{$color-accent-light};
   --text: #{$color-text-light};
-  --glass: #{$color-glass-light};
-  --border: rgba(0, 0, 0, 0.1);
+  --border: rgba(0, 0, 0, 0.06);
 }
 
 @mixin premium-card {
-  background: var(--glass);
-  backdrop-filter: blur(12px);
+  background: var(--bg);
   border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: var(--radius);
+  padding: 2.5rem;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   
   &:hover {
-    border-color: var(--primary);
-    transform: translateY(-4px);
-    box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.4);
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+    border-color: rgba(56, 189, 248, 0.3);
   }
-}
-
-@mixin glow-effect($color) {
-  text-shadow: 0 0 10px rgba($color, 0.5), 0 0 20px rgba($color, 0.3);
 }

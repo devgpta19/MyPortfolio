@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { ThemeProvider } from './context/ThemeContext';
 import HUD from './components/HUD';
 import Hero from './sections/Hero';
+import Experience from './sections/Experience';
 import Education from './sections/Education';
 import Skills from './sections/Skills';
 import Projects from './sections/Projects';
@@ -30,6 +31,7 @@ function App() {
             <HUD />
             <main>
               <Hero />
+              <Experience />
               <Education />
               <Skills />
               <Projects />

@@ -1,5 +1,4 @@
-import React from 'react';
-import { School, WorkspacePremium } from '@mui/icons-material';
+
 
 const educationData = [
   {
@@ -8,8 +7,7 @@ const educationData = [
     institution: 'CDAC, Pune',
     period: 'AUG 2025 — FEB 2026',
     score: '73%',
-    desc: 'Intensive post-graduate diploma covering advanced software development, system architecture, and modern web technologies.',
-    icon: <WorkspacePremium />
+    desc: 'Intensive post-graduate diploma covering advanced software development, system architecture, and modern web technologies.'
   },
   {
     id: 2,
@@ -17,8 +15,7 @@ const educationData = [
     institution: 'LNCT & Science, Bhopal',
     period: 'OCT 2020 — JUL 2024',
     score: '8.45 CGPA',
-    desc: 'Foundational degree in Computer Science, focusing on Data Structures, Algorithms, DBMS, and core engineering principles.',
-    icon: <School />
+    desc: 'Foundational degree in Computer Science, focusing on Data Structures, Algorithms, DBMS, and core engineering principles.'
   }
 ];
 
@@ -26,109 +23,77 @@ const Education = () => {
   return (
     <section id="education" className="section-container education-section">
       <div className="section-header">
-        <h2 className="text-gradient">Academic Foundation</h2>
-        <div className="header-line"></div>
+        <h2>Academic Foundation</h2>
       </div>
 
-      <div className="education-timeline">
+      <div className="education-list">
         {educationData.map((item) => (
-          <div key={item.id} className="education-card hud-card">
-            <div className="card-header">
-              <div className="degree-icon">
-                {item.icon}
-              </div>
-              <div className="header-text">
-                <h3>{item.degree}</h3>
-                <h4 className="institution">{item.institution}</h4>
-              </div>
-              <div className="period-badge">
-                {item.period}
-              </div>
+          <div key={item.id} className="education-item hud-card">
+            <div className="edu-header">
+              <h3 className="degree">{item.degree}</h3>
+              <span className="period">{item.period}</span>
             </div>
-
-            <div className="card-content">
-              <p className="edu-desc">{item.desc}</p>
-              <div className="score-container">
-                <span className="score-label">ACHIEVEMENT:</span>
-                <span className="score-value">{item.score}</span>
-              </div>
+            <h4 className="institution">{item.institution}</h4>
+            <p className="edu-desc">{item.desc}</p>
+            <div className="score">
+              <span>Result:</span> <strong>{item.score}</strong>
             </div>
           </div>
         ))}
       </div>
 
       <style jsx>{`
-        .section-header {
-          margin-bottom: 50px;
+        .education-list {
+          display: flex;
+          flex-direction: column;
+          gap: 40px;
         }
-        .section-header h2 {
-          font-size: 2.5rem;
+        .education-item {
+          border-left: 4px solid var(--primary);
+        }
+        .edu-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
           margin-bottom: 10px;
         }
-        .header-line {
-          width: 60px;
-          height: 4px;
-          background: var(--primary);
-          border-radius: 2px;
-        }
-        .education-timeline {
-          display: flex;
-          flex-direction: column;
-          gap: 30px;
-        }
-        .education-card {
-          position: relative;
-          display: flex;
-          flex-direction: column;
-          gap: 20px;
-          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-          overflow: hidden;
-        }
-        
-        .card-header {
-          display: flex;
-          align-items: center;
-          gap: 25px;
-          flex-wrap: wrap;
-        }
-        .degree-icon {
+        .degree {
+          font-size: 1.5rem;
           color: var(--primary);
-          background: rgba(129, 140, 248, 0.1);
-          padding: 15px;
-          border-radius: 16px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
+          font-weight: 800;
         }
-        .header-text { flex: 1; }
-        .header-text h3 { font-size: 1.5rem; color: var(--text); margin-bottom: 5px; font-weight: 700; }
-        .institution { font-size: 1.1rem; opacity: 0.6; font-weight: 500; }
-        
-        .period-badge {
-          background: rgba(129, 140, 248, 0.1);
-          color: var(--primary);
-          padding: 8px 20px;
-          border-radius: 100px;
+        .period {
+          font-size: 0.9rem;
           font-weight: 700;
-          font-size: 0.85rem;
-          border: 1px solid rgba(129, 140, 248, 0.2);
+          color: var(--primary);
+          background: rgba(var(--primary-rgb), 0.1);
+          padding: 6px 16px;
+          border-radius: 100px;
+        }
+        .institution {
+          font-size: 1.1rem;
+          opacity: 0.7;
+          margin-bottom: 15px;
+          font-weight: 600;
+        }
+        .edu-desc {
+          font-size: 1.05rem;
+          opacity: 0.8;
+          line-height: 1.7;
+          margin-bottom: 20px;
+        }
+        .score {
+          font-size: 0.95rem;
+          opacity: 0.9;
+          padding: 8px 16px;
+          background: rgba(255, 255, 255, 0.03);
+          display: inline-block;
+          border-radius: 8px;
         }
 
-        .edu-desc { line-height: 1.8; opacity: 0.7; max-width: 800px; font-size: 1.1rem; }
-        
-        .score-container {
-          margin-top: 20px;
-          display: flex;
-          gap: 12px;
-          align-items: center;
-        }
-        .score-label { font-size: 0.75rem; opacity: 0.5; font-weight: 800; letter-spacing: 1px; }
-        .score-value { color: var(--accent); font-weight: 800; font-size: 1.2rem; font-family: var(--font-mono); }
-
-        @media (max-width: 768px) {
-          .card-header { gap: 15px; }
-          .header-text h3 { font-size: 1.2rem; }
-          .period-badge { order: -1; width: 100%; text-align: center; }
+        @media (max-width: 600px) {
+          .edu-header { flex-direction: column; align-items: flex-start; gap: 10px; }
+          .period { order: -1; }
         }
       `}</style>
     </section>
