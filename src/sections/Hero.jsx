@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { Button } from '@mui/material';
 import gsap from 'gsap';
+import Avatar from "../assets/AVATAR.png"
 
 const Hero = () => {
   const containerRef = useRef(null);
@@ -63,12 +64,12 @@ const Hero = () => {
         <div className="hero-image-container">
           <div className="hero-card hud-card">
             <div className="avatar-box">
-              <div className="avatar-placeholder">DG</div>
+              <div className="avatar-placeholder"><img src={Avatar} alt="" /></div>
             </div>
             <div className="status-badge">
               <span className="dot"></span>Open to Work
             </div>
-          </div>
+          </div>  
         </div>
       </div>
 
@@ -136,7 +137,7 @@ const Hero = () => {
           height: 120px;
           margin: 0 auto 30px;
           padding: 10px;
-          border: 2px dashed var(--primary);
+          // border: 2px dashed var(--primary);
           border-radius: 40px;
           display: flex;
           align-items: center;
@@ -145,7 +146,7 @@ const Hero = () => {
         .avatar-placeholder {
           width: 100%;
           height: 100%;
-          background: var(--primary);
+          // background: var(--primary);
           border-radius: 30px;
           display: flex;
           align-items: center;
@@ -153,7 +154,7 @@ const Hero = () => {
           font-size: 2.5rem;
           font-weight: 800;
           color: white;
-          box-shadow: 0 10px 30px rgba(2, 132, 199, 0.3);
+          // box-shadow: 0 10px 30px rgba(2, 132, 199, 0.3);
         }
         .status-badge {
           display: inline-flex;
