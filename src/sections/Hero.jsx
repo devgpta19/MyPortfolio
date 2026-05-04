@@ -56,7 +56,7 @@ const Hero = () => {
             <Button variant="contained" color="primary" size="large" onClick={() => document.getElementById('projects').scrollIntoView({ behavior: 'smooth' })}>
               Explore Projects
             </Button>
-            <Button variant="outlined" color="primary" size="large" onClick={() => window.open('https://drive.google.com/file/d/1tW7PhK327iajaLIpCigaMtJJxCkT0ACs/view?usp=drive_link', '_blank')}>
+            <Button variant="outlined" color="primary" size="large" onClick={() => window.open('https://drive.google.com/file/d/1g_2qht3bH0SVhmc9p-VvuLxLZVeut01Y/view?usp=sharing', '_blank')}>
               My Resume
             </Button>
           </div>
