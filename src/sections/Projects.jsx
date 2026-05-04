@@ -24,7 +24,7 @@ const projects = [
     subtitle: 'PERSONAL FINANCE TRACKER',
     desc: 'Full-stack finance management with secure JWT auth & role-based access. Interactive dashboards using Chart.js.',
     tech: ['Spring Boot', 'React.js', 'MySQL', 'JWT', 'Chart.js'],
-    links: { github: 'https://github.com/devgpta19/FINANCE-TRACKER', live: '#' }
+    links: { github: 'https://github.com/devgpta19/FINANCE-TRACKER', live: 'https://finance-tracker-git-main-devansh-guptas-projects-be597bb9.vercel.app' }
   },
   {
     id: 2,
@@ -101,9 +101,9 @@ const Projects = () => {
             <p>Calculated based on architecture & features</p>
           </div>
           <div className="chart-wrapper">
-            <Bar 
-              data={chartData} 
-              options={chartOptions} 
+            <Bar
+              data={chartData}
+              options={chartOptions}
             />
           </div>
         </div>
